@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: sircharles
+  password:
+
+development:
+  <<: *default
+  database: artiste_development
+
+test:
+  <<: *default
+  database: artiste_test
+
+production:
+  <<: *default
+  database: artiste_production
