@@ -1,0 +1,9 @@
+%h1 Create profile
+
+= simple_form_for [current_user, @profile], url: user_profile_path do |f|
+  .form-inputs
+    = f.input :blurb
+    = f.input :quote_list, placeholder: 'Asterisk separated'
+    = f.input :location
+  .form-actions
+    = f.button :submit, 'Create profile'

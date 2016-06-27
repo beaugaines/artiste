@@ -1,0 +1,17 @@
+%h1= @user.full_name
+
+.callout.primary
+  .badge
+    = @user.profile.blurb
+
+- @user.profile.quotes.each do |quote|
+  .media-object
+    .media-object-section
+      .thumbnail
+        = robotar(@user.email)
+    .media-object-section
+      %em= quote
+
+%h4
+  Location:
+  = @user.profile.location
