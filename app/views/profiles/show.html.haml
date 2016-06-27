@@ -15,3 +15,18 @@
 %h4
   Location:
   = @user.profile.location
+
+%h4 Artworks
+= link_to 'Add a new work', new_user_artwork_path(current_user)
+- if @user.artworks.any?
+  - @user.artworks.each do |artwork|
+    .media-object
+      %h3= artwork.title
+      %p= artwork.price
+      %p= artwork.media_list
+      - artwork.images.each do |image|
+        %figure
+          = image_tag(attachment_url(image, :file, :fill, 300, 300))
+    = link_to 'View artwork', [artwork.user, artwork]
+- else
+  No art here

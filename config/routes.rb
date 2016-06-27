@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   root 'welcome#index'
 
   authenticated :user do
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users, only: [] do
+    resources :artworks
     resource :profile
   end
 end

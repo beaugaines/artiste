@@ -11,7 +11,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @user = User.includes(:profile).find(params[:user_id])
+    @user = User.includes(:profile, artworks: [:images]).find(params[:user_id])
   end
 
   def edit

@@ -16,6 +16,9 @@ gem 'hamlit-rails'
 gem 'devise'
 gem 'pundit'
 gem 'figaro'
+gem 'refile', require: 'refile/rails', github: 'refile/refile'
+gem 'refile-mini_magick'
+gem 'cocoon'
 
 group :development do
   gem 'thin'

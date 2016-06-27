@@ -9,8 +9,4 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name])
   end
 
-  def after_sign_up_path_for(resource)
-    new_user_profile_path(current_user)
-  end
-
 end

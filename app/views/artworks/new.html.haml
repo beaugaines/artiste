@@ -1,0 +1,17 @@
+%h1 New work
+
+= simple_form_for [current_user, @artwork] do |f|
+
+  .form-inputs
+    = f.input :title
+    = f.input :price
+    = f.input :media_list, placeholder: 'Comma separated'
+
+  #images
+    = f.simple_fields_for :images do |image|
+      = render 'image_fields', f: image
+      .links
+        = link_to_add_association 'add image', f, :images
+
+  .form-actions
+    = f.button :submit

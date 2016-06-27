@@ -11,10 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160627142838) do
+ActiveRecord::Schema.define(version: 20160627212343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "artworks", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "media",      default: [],              array: true
+    t.integer  "price"
+    t.integer  "quantity"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "artworks", ["user_id"], name: "index_artworks_on_user_id", using: :btree
+
+  create_table "images", force: :cascade do |t|
+    t.integer  "artwork_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "file_id"
+  end
+
+  add_index "images", ["artwork_id"], name: "index_images_on_artwork_id", using: :btree
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"
@@ -47,4 +68,6 @@ ActiveRecord::Schema.define(version: 20160627142838) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "artworks", "users"
+  add_foreign_key "images", "artworks"
 end
