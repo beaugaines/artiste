@@ -1,3 +1,6 @@
 %h3 Recently active
 
-= link_to 'View profile', user_profile_path(current_user)
+- if current_user.profile
+  = link_to 'View profile', user_profile_path(current_user)
+- else
+  = link_to 'Build your profile', new_user_profile_path(current_user)

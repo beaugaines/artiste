@@ -6,7 +6,16 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  devise_for :users
+  devise_for :users,
+    path: 'auth',
+    path_names: {
+      sign_in: 'login',
+      sign_up: 'signup',
+      sign_out: 'logout'
+    },
+    controllers: {
+      registrations: 'users/registrations'
+    }
 
   resources :images, only: [:update]
   

@@ -1,8 +1,7 @@
 %h1= @user.full_name
 
 .callout.primary
-  .badge
-    = @user.profile.blurb
+  = @user.profile.blurb
 
 - @user.profile.quotes.each do |quote|
   .media-object

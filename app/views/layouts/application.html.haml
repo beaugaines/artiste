@@ -14,6 +14,14 @@
     = csrf_meta_tag
 
   %body
+    .row
+      .large-3.columns
+        %h1 Artiste
+      .large-9.columns
+        .float-right
+          - if user_signed_in?
+            = link_to 'Sign out', destroy_user_session_path, method: :delete
+
     .flash
       = render 'shared/messages'
 
