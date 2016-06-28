@@ -19,6 +19,7 @@ gem 'figaro'
 gem 'refile', require: 'refile/rails', github: 'refile/refile'
 gem 'refile-mini_magick'
 gem 'cocoon'
+gem 'acts_as_list'
 
 group :development do
   gem 'thin'

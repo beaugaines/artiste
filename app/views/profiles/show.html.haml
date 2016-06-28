@@ -24,9 +24,8 @@
       %h3= artwork.title
       %p= artwork.price
       %p= artwork.media_list
-      - artwork.images.each do |image|
-        %figure
-          = image_tag(attachment_url(image, :file, :fill, 300, 300))
+      %figure.marquee-artwork
+        = image_tag(attachment_url(artwork.images.first, :file, :fill, 400, 400))
     = link_to 'View artwork', [artwork.user, artwork]
 - else
   No art here

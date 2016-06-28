@@ -1,0 +1,10 @@
+%h3= @artwork.title
+%p= @artwork.price
+%p= @artwork.media_list
+.list-group#draggableList
+  - @artwork.images.each do |image|
+    = div_for(image, class: 'list-group-item') do
+      %span{ class: 'ion-arrow-move', 'aria-hidden' => 'true'}
+      = image_tag(attachment_url(image, :file, :fill, 300, 300))
+
+= link_to 'View', user_artwork_path(@artwork.user, @artwork)

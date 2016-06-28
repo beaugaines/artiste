@@ -1,4 +1,7 @@
 class ArtworksController < ApplicationController
+  def index
+    
+  end
   def new
     @artwork = current_user.artworks.new
     @artwork.images.build
@@ -6,7 +9,6 @@ class ArtworksController < ApplicationController
 
   def create
     @artwork = current_user.artworks.new(artwork_params)
-    binding.pry
     if @artwork.save
       redirect_to user_profile_path(current_user), notice: 'Artwork added'
     else
@@ -17,7 +19,12 @@ class ArtworksController < ApplicationController
 
   def show
     @user = User.find(params[:user_id])
-    @artwork = @user.artworks.find(params[:id])
+    @artwork = @user.artworks.includes(:images).find(params[:id])
+  end
+
+  def edit
+    @user = User.find(params[:user_id])
+    @artwork = @user.artworks.includes(:images).find(params[:id])
   end
 
   private

@@ -51,6 +51,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts_as_list (0.7.4)
+      activerecord (>= 3.0)
     addressable (2.4.0)
     arel (6.0.3)
     babel-source (5.8.35)
@@ -318,6 +320,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_list
   better_errors
   binding_of_caller
   capybara

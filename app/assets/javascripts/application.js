@@ -11,9 +11,11 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require foundation
 //= require cocoon
+//= require refile
 //= require turbolinks
 //= require_tree .
 

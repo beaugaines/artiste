@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
 
+  authenticated :user do
+    root 'artworks#index', as: :authenticated_root
+  end
 
   root 'welcome#index'
 
-  authenticated :user do
-    root 'profile#show', as: :authenticated_root
-  end
-
   devise_for :users
 
+  resources :images, only: [:update]
+  
   resources :users, only: [] do
     resources :artworks
     resource :profile

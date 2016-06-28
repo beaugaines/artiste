@@ -1,1 +1,9 @@
 %h3= @artwork.title
+%p= @artwork.price
+%p= @artwork.media_list
+- @artwork.images.each_with_index do |image, idx|
+  = div_for(image) do
+    - idx == 0 ? dim = 600 : dim = 400
+    = image_tag(attachment_url(image, :file, :fill, dim, dim))
+
+= link_to 'edit order', edit_user_artwork_path(@artwork.user, @artwork)
