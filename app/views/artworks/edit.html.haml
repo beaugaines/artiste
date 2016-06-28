@@ -1,10 +1,18 @@
-%h3= @artwork.title
-%p= @artwork.price
-%p= @artwork.media_list
-.list-group#draggableList
-  - @artwork.images.each do |image|
-    = div_for(image, class: 'list-group-item') do
-      %span{ class: 'ion-arrow-move', 'aria-hidden' => 'true'}
-      = image_tag(attachment_url(image, :file, :fill, 300, 300))
+.row
+  .large-6.columns
+    %h3= @artwork.title
+    %p= number_to_currency(@artwork.price)
+    %p= @artwork.media_list
 
-= link_to 'View', user_artwork_path(@artwork.user, @artwork)
+    .list-group#draggableList
+      - @artwork.images.each do |image|
+        = div_for(image, class: 'list-group-item') do
+          = image_tag(attachment_url(image, :file, :fill, 300, 300))
+          %span{ class: 'ion-arrow-move', 'aria-hidden' => 'true'}
+
+  .large-6.columns
+    %button.button{"data-toggle" => "explanation-dropdown", type: "button", class: 'explanation-dropdown-button'} How does this work?
+    #explanation-dropdown.dropdown-pane{"data-dropdown" => "", "data-hover" => "true", "data-hover-pane" => "true"}
+      Grab the image by the pull handle on the right and drag to desired location.  That's it!
+    %br/
+    = link_to 'View listing', user_artwork_path(@artwork.user, @artwork), class: 'tiny radius button'

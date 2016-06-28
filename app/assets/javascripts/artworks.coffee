@@ -10,8 +10,6 @@ $ ->
     draggable: '.list-group-item'
 
     onEnd: (e) ->
-      console.log(e.oldIndex)
-      console.log(e.newIndex)
       itemId = e.item.id.split(/_/)[1]
       $.ajax
         url: "/images/#{itemId}"
